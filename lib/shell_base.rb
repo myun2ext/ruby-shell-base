@@ -17,7 +17,7 @@ class ShellBase
 
     return if cmd == 'exit'
     if respond_to? cmd
-      send(cmd, input)
+      send(cmd, *input)
     else
       puts cmd + ": Command not found"
     end
