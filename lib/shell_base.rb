@@ -3,15 +3,16 @@ require 'readline'
 
 class ShellBase
   def self.prompt(s)
-    @@prompt = s
+    @@default_prompt = s
   end
 
   def initialize
+    @prompt = @@default_prompt
     while readline; end
   end
 
   def readline
-    input = Readline.readline(@@prompt, true)
+    input = Readline.readline(@prompt, true)
     input != 'exit'
   end
 end
