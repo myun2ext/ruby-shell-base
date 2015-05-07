@@ -18,7 +18,23 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+class ExampleShell < ShellBase
+  prompt "example:$ "
+
+  def hello(*params)
+    puts "hello " + params.join(" ") + "."
+    @prompt = "example:#{params[0] || ''}:$ "
+  end
+end
+ExampleShell.new
+```
+
+for example implemented `hello` command.
+
+And exit to `exit` command.
+
+`@prompt` instance variable is prompt string.
 
 ## Contributing
 
