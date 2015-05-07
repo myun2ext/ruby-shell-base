@@ -12,7 +12,7 @@ class ShellBase
   end
 
   def readline
-    input = Readline.readline(@prompt, true)
-    input != 'exit'
+    input = Readline.readline(@prompt, true).split(" ")
+    input[0] != 'exit'
   end
 end
