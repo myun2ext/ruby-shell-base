@@ -13,6 +13,14 @@ class ShellBase
 
   def readline
     input = Readline.readline(@prompt, true).split(" ")
-    input[0] != 'exit'
+    cmd = input.shift
+
+    return if cmd == 'exit'
+    if respond_to? cmd
+      send(cmd, input)
+    else
+      puts cmd + ": Command not found"
+    end
+    true
   end
 end
