@@ -1,8 +1,9 @@
-require "shell_base/version"
+require 'shell_base/version'
+require 'readline'
 
 class ShellBase
   def self.prompt(s)
-    @prompt = s
+    @@prompt = s
   end
 
   def initialize
@@ -11,6 +12,6 @@ class ShellBase
 
   def readline
     input = Readline.readline(@@prompt, true)
-    input != "exit"
+    input != 'exit'
   end
 end
