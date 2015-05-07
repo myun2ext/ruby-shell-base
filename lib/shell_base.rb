@@ -2,6 +2,7 @@ require 'shell_base/version'
 require 'readline'
 
 class ShellBase
+  class Exit < Exception; end
   def self.prompt(s)
     @@default_prompt = s
   end
@@ -11,15 +12,23 @@ class ShellBase
     while readline; end
   end
 
+  def exit
+    puts "bye."
+    raise Exit
+  end
+
+  def method_missing(method_name)
+    puts method_name.to_s + ": Command not found"
+  end
+
   def readline
     input = Readline.readline(@prompt, true).split(" ")
     cmd = input.shift
 
-    return if cmd == 'exit'
-    if respond_to? cmd
+    begin
       send(cmd, *input)
-    else
-      puts cmd + ": Command not found"
+    rescue Exit
+      return false
     end
     true
   end
