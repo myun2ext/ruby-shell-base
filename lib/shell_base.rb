@@ -23,11 +23,12 @@ class ShellBase
   def readline
     input = Readline.readline(prompt, true).split(" ")
     cmd = input.shift
-
-    begin
-      send(cmd, *input)
-    rescue Exit
-      return false
+    if cmd
+      begin
+        send(cmd, *input)
+      rescue Exit
+        return false
+      end
     end
     true
   end
