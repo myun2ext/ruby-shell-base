@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["myun2@nwhite.info"]
   spec.summary       = "Ruby Shell Base Library Gem."
   spec.description   = "Ruby Shell Base Library Gem."
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/myun2ext/ruby-shell-base"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
