@@ -20,11 +20,12 @@ Or install it yourself as:
 
 ```ruby
 class ExampleShell < ShellBase
-  prompt "example:$ "
-
   def hello(*params)
     puts "hello " + params.join(" ") + "."
-    @prompt = "example:#{params[0] || ''}:$ "
+  end
+
+  def prompt
+    "example:$ "
   end
 end
 ExampleShell.new
@@ -33,8 +34,6 @@ ExampleShell.new
 for example implemented `hello` command.
 
 And exit to `exit` command.
-
-`@prompt` instance variable is prompt string.
 
 ## Contributing
 

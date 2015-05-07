@@ -3,18 +3,17 @@ require 'readline'
 
 class ShellBase
   class Exit < Exception; end
-  def self.prompt(s)
-    @@default_prompt = s
-  end
 
   def initialize
-    @prompt = @@default_prompt
     while readline; end
   end
 
+  def prompt
+    "$ "
+  end
+
   def exit
-    puts "bye."
-    raise Exit
+    puts "bye."; raise Exit
   end
 
   def method_missing(method_name)
@@ -22,7 +21,7 @@ class ShellBase
   end
 
   def readline
-    input = Readline.readline(@prompt, true).split(" ")
+    input = Readline.readline(prompt, true).split(" ")
     cmd = input.shift
 
     begin
